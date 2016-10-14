@@ -2,7 +2,13 @@ var GitHubSearch = require('./../js/githubapp.js').gitHubModule;
 
 var displayResults = function (username, followers){
 
-  $("#results").text("this is " + username + "and has " + followers + "followers.");
+  $("#results").text("This is" + username + "and has " + followers + "followers.");
+
+};
+
+var displayErrorMessage = function (username) {
+
+  $("#results").append("<p class='bg-warning'>We couldn’t find any users matching "+"'"+ username +"'</p>");
 
 };
 
@@ -17,7 +23,7 @@ $(document).ready(function() {
 
     var username = $("#username").val();
 
-    currentGitHubSearch.userLookup(username, displayResults);
+    currentGitHubSearch.userLookup(username, displayResults, displayErrorMessage);
 
 
   });
