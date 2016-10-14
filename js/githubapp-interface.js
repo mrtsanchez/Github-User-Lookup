@@ -4,7 +4,7 @@ var displayResults = function (username, followers){
 
   $("#results").text("this is " + username + "and has " + followers + "followers.");
 
-}
+};
 
 $(document).ready(function() {
 

@@ -10,7 +10,7 @@ GitHubSearch.prototype.userLookup = function(username, displayResults){
   console.log(response);
   displayResults(username, response.followers)
   }).fail(function(error){
-  console.log(error.responseJSON.message);
+  $("#results").text(error.responseJSON.message);
   });
 };
 
