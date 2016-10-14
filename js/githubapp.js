@@ -4,14 +4,14 @@ function GitHubSearch() {
 
 }
 
-GitHubSearch.prototype.userLookup = function(name){
+GitHubSearch.prototype.userLookup = function(username){
 
-  $.get('https://api.github.com/users/' + name + '?access_token=' + apiKey).then(function(response){
+  $.get('https://api.github.com/users/' + username + '?access_token=' + apiKey).then(function(response){
   console.log(response);
+  displayResults(username, responseJSON.followers)
   }).fail(function(error){
   console.log(error.responseJSON.message);
   });
-
 };
 
 exports.gitHubModule = GitHubSearch;

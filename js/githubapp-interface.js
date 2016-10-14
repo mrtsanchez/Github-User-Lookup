@@ -1,19 +1,23 @@
 var GitHubSearch = require('./../js/githubapp.js').gitHubModule;
 
+var displayResults = function (username, followers){
+
+  $("#results").text("this is " + username + "and has " + followers + "followers.");
+
+}
+
 $(document).ready(function() {
 
-  var currentGitHubSearch = new GitHubSearch(name);
+  var currentGitHubSearch = new GitHubSearch();
+
 
   $("#github-search").submit(function(event) {
 
-
-
     event.preventDefault();
-    var name = $("#name").val();
 
-    currentGitHubSearch.userLookup(name);
+    var username = $("#username").val();
 
-    $("#results").text("test");
+    currentGitHubSearch.userLookup(username, displayResults);
 
 
   });
