@@ -1,6 +1,6 @@
 var GitHubSearch = require('./../js/githubapp.js').gitHubModule;
 
-var displayResults = function (username, followers, avatarUrl){
+var displayResults = function (username, followers, avatarUrl, location, githubUrl){
 
   $("#results").show();
 
@@ -9,12 +9,10 @@ var displayResults = function (username, followers, avatarUrl){
     "src": avatarUrl
   });
 
-  // var profilePicture = document.createElement("img");
-  // profilePicture.src = avatarUrl;
-  // profilePicture.class = "img-responsive";
-
-  $("#username").text("This is" + username + "and has " + followers + "followers.");
+  $("#name").text(username);
+  $("#location").text(location);
   $("#profile_picture").append(profilePicture);
+  $("#button-link").append('<a class="btn btn-primary" href='+ githubUrl +' role="button">Go to Github Profile</a>');
 
 };
 
