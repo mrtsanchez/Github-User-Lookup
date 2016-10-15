@@ -29,9 +29,24 @@ var displayErrorMessage = function (username) {
 
 };
 
+function calculateTime(created_at){
+
+  var months = moment().diff(created_at, 'months');
+  var years = moment().diff(created_at, 'years');
+
+  if (months === 1){
+    return months + " month ago.";
+  } else if (months >= 12){
+    return years + "years ago."
+  } else {
+    return months + " months ago.";
+  }
+
+}
+
 function getRepos(repos, length){
   for (var i = 0; i < length; i++) {
-    $("#repos").append('<dt><a class="link" id="all-repos" href="'+ repos[i].htm_url +'">'+ repos[i].name +'</a></dt><dd class="repos-description">'+ repos[i].description +'</dd>');
+    $("#repos").append('<dt><a class="link" id="all-repos" target="_blank" href="'+ repos[i].html_url +'">'+ repos[i].name +'</a></dt><dd class="repos-description"><p>'+ repos[i].description +'</p><p>Created '+ calculateTime(repos[i].created_at)+'</p></dd>');
   }
 }
 
