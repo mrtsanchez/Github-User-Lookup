@@ -22,15 +22,24 @@ var displayErrorMessage = function (username) {
 
 };
 
-var displayRepos = function(repos){
-
-$("#repos").append('<dl>');
-
-  for (var i = 0; i < 5; i++) {
+function getRepos(repos, length){
+  for (var i = 0; i < length; i++) {
     $("#repos").append('<dt>'+ repos[i].name +'</dt><dd class="repos-description">'+ repos[i].description +'</dd>');
   }
+}
 
-$("#repos").append('</dl>');
+var displayRepos = function(repos){
+
+  $("#repos").append('<dl>');
+
+  if (repos.length < 6){
+    getRepos(repos, repos.length);
+    } else {
+    getRepos(repos, 6);
+    $("#repos").append('<a href="#" id="all-repos">Display all repos</a>');
+  }
+
+  $("#repos").append('</dl>');
 
 };
 
@@ -48,6 +57,10 @@ $(document).ready(function() {
     currentGitHubSearch.userLookup(username, displayResults, displayErrorMessage);
     currentGitHubSearch.reposLookup(username, displayRepos);
 
+  });
+
+  $("#all-repos").click(function(){
+    getRepos(repos);
   });
 
 
