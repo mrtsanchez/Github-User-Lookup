@@ -17,19 +17,39 @@
         <div class="panel-body">
           <form id="github-search" class="form-inline">
             <div class="form-group">
-              <label class="sr-only" for="username">Username: </label>
+              <label for="username">Github </label>
               <input type="text" class="form-control" id="username" placeholder="username">
             </div>
             <button type="submit" class="btn btn-primary">Search</button>
           </form>
         </div>
       </div>
+
+      <div class="alert alert-danger" role="alert" id="error"></div>
+
     </div>
 
-    <div class="alert alert-success" role="alert" id="error"></div>
+    <div class="container" id="results">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-body" id="profile_picture">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <span id="username"></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
 
 
-  <span id="results"></span>
+
+  </div>
+
   </body>
-
 </html>

@@ -2,5 +2,12 @@ body {
   margin-top: 20px;
 }
 
+#error {
+  display: none;
+}
+
+#results {
+  display: none;
+}
 
 /*#4078C0*/

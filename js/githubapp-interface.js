@@ -1,14 +1,26 @@
 var GitHubSearch = require('./../js/githubapp.js').gitHubModule;
 
-var displayResults = function (username, followers){
+var displayResults = function (username, followers, avatarUrl){
 
-  $("#results").text("This is" + username + "and has " + followers + "followers.");
+  $("#results").show();
+
+  var profilePicture = $("<img/>", {
+    "class": "img-responsive",
+    "src": avatarUrl
+  });
+
+  // var profilePicture = document.createElement("img");
+  // profilePicture.src = avatarUrl;
+  // profilePicture.class = "img-responsive";
+
+  $("#username").text("This is" + username + "and has " + followers + "followers.");
+  $("#profile_picture").append(profilePicture);
 
 };
 
 var displayErrorMessage = function (username) {
 
-  $("#error").text("We couldn’t find any users matching "+"'"+ username +"'");
+  $("#error").show().text("Oh Snap! We couldn’t find any users matching "+"'"+ username +"'");
 
 };
 
