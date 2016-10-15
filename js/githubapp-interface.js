@@ -31,7 +31,7 @@ var displayErrorMessage = function (username) {
 
 function getRepos(repos, length){
   for (var i = 0; i < length; i++) {
-    $("#repos").append('<dt>'+ repos[i].name +'</dt><dd class="repos-description">'+ repos[i].description +'</dd>');
+    $("#repos").append('<dt><a class="link" id="all-repos" href="'+ repos[i].htm_url +'">'+ repos[i].name +'</a></dt><dd class="repos-description">'+ repos[i].description +'</dd>');
   }
 }
 
@@ -66,7 +66,7 @@ $(document).ready(function() {
 
   });
 
-  $("#all-repos")[0].click(function(){
+  $("#all-repos").click(function(){
     $("#repos").append("aqui deberia salir el resto");
   });
 
