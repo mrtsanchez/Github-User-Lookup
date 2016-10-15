@@ -14,10 +14,10 @@ GitHubSearch.prototype.userLookup = function(username, displayResults, displayEr
   });
 };
 
-GitHubSearch.prototype.reposLookup = function(username){
+GitHubSearch.prototype.reposLookup = function(username, displayRepos){
 
   $.get('https://api.github.com/users/' + username + '/repos?access_token=' + apiKey).then(function(response){
-  console.log(response);
+  displayRepos(response);
   }).fail(function(error){
   console.log(error);
   });

@@ -22,6 +22,18 @@ var displayErrorMessage = function (username) {
 
 };
 
+var displayRepos = function(repos){
+
+$("#repos").append('<dl>');
+
+  for (var i = 0; i < 5; i++) {
+    $("#repos").append('<dt>'+ repos[i].name +'</dt><dd class="repos-description">'+ repos[i].description +'</dd>');
+  }
+
+$("#repos").append('</dl>');
+
+};
+
 $(document).ready(function() {
 
   var currentGitHubSearch = new GitHubSearch();
@@ -34,7 +46,7 @@ $(document).ready(function() {
     var username = $("#username").val();
 
     currentGitHubSearch.userLookup(username, displayResults, displayErrorMessage);
-    currentGitHubSearch.reposLookup(username);
+    currentGitHubSearch.reposLookup(username, displayRepos);
 
   });
 
