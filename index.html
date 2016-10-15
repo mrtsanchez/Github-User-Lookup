@@ -8,23 +8,25 @@
     <title>Github app</title>
   </head>
   <body>
+    <div class="container">
+      <div class="page-header">
+        <h1>Github search app <small>Search for developers by username.</small></h1>
+      </div>
 
-    <div class="page-header">
-      <h1>Github search app <small>Search for developers by username.</small></h1>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <form id="github-search" class="form-inline">
-          <div class="form-group">
-            <label class="sr-only" for="username">Username: </label>
-            <input type="text" class="form-control" id="username" placeholder="username">
-          </div>
-          <button type="submit" class="btn btn-primary">Search</button>
-        </form>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form id="github-search" class="form-inline">
+            <div class="form-group">
+              <label class="sr-only" for="username">Username: </label>
+              <input type="text" class="form-control" id="username" placeholder="username">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+          </form>
+        </div>
       </div>
     </div>
 
+    <div class="alert alert-success" role="alert" id="error"></div>
 
 
   <span id="results"></span>

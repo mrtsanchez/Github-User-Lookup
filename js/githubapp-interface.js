@@ -8,7 +8,7 @@ var displayResults = function (username, followers){
 
 var displayErrorMessage = function (username) {
 
-  $("#results").append("<p class='bg-warning'>We couldn’t find any users matching "+"'"+ username +"'</p>");
+  $("#error").text("We couldn’t find any users matching "+"'"+ username +"'");
 
 };
 
