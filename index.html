@@ -10,20 +10,16 @@
   <body>
     <div class="container">
       <div class="page-header">
-        <h1>Github search app <small>Search for developers by username.</small></h1>
+        <h1>Github search app. <small>Search for developers by username.</small></h1>
       </div>
 
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <form id="github-search" class="form-inline">
-            <div class="form-group">
-              <label for="username">Github </label>
-              <input type="text" class="form-control" id="username" placeholder="username">
-            </div>
-            <button type="submit" class="btn btn-primary">Search</button>
-          </form>
+      <form id="github-search" class="form-inline">
+        <div class="form-group">
+          <label for="username">Github </label>
+          <input type="text" class="form-control" id="username" placeholder="username">
         </div>
-      </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
 
       <div class="alert alert-danger" role="alert" id="error"></div>
 
@@ -34,8 +30,8 @@
         <div class="col-md-4">
           <div class="panel panel-primary">
             <div class="panel-heading">
-             <h3 class="panel-title">Name: <span id="name"></span></h3>
-           </div>
+             <h3 class="panel-title"><span id="name"></span></h3>
+            </div>
             <div class="panel-body">
               <div id="profile_picture">
               </div>
@@ -49,12 +45,28 @@
             </div>
           </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-4">
           <div class="panel panel-default">
+            <div class="panel-heading">
+             <h3 class="panel-title">Public Repos:
+             <span class="mybadge" id="public-repos"></span></h3>
+            </div>
             <div class="panel-body">
-              <h3>Public Repos:</h3>
               <span id="repos"></span>
             </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="panel panel-default">
+              <ul class="list-group">
+                <li class="list-group-item"><h4>Bio: <small><span id="bio"></span></small></h4></li>
+                <li class="list-group-item"><h4>Company: <small><span id="company"></span></small></h4></li>
+                <li class="list-group-item"><h4>Email: <small><span id="email"></span></small></h4></li>
+                <li class="list-group-item"><h4>Blog: <small><span id="blog"></span></small></h4></li>
+                <li class="list-group-item"><h4>Followers: <small><span id="followers"></span></small></h4></li>
+                <li class="list-group-item"><h4>Following: <small><span id="following"></span></small></h4></li>
+              </ul>
           </div>
         </div>
 

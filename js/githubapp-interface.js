@@ -1,6 +1,6 @@
 var GitHubSearch = require('./../js/githubapp.js').gitHubModule;
 
-var displayResults = function (username, followers, avatarUrl, location, githubUrl){
+var displayResults = function (username, followers, following, avatarUrl, location, githubUrl, publicRepos, bio, blog, company, email){
 
   $("#results").show();
 
@@ -13,6 +13,13 @@ var displayResults = function (username, followers, avatarUrl, location, githubU
   $("#location").text(location);
   $("#profile_picture").append(profilePicture);
   $("#button-link").append('<a class="btn btn-primary" href='+ githubUrl +' role="button">Go to Github Profile</a>');
+  $("#followers").text(followers);
+  $("#following").text(following);
+  $("#bio").text(bio);
+  $("#company").text(company);
+  $("#blog").text(blog);
+  $("#email").text(email);
+  $("#public-repos").text(publicRepos);
 
 };
 
@@ -36,7 +43,7 @@ var displayRepos = function(repos){
     getRepos(repos, repos.length);
     } else {
     getRepos(repos, 6);
-    $("#repos").append('<a href="#" id="all-repos">Display all repos</a>');
+    $("#repos").append('<a class="link" id="all-repos" href="#">Display all repos</a>');
   }
 
   $("#repos").append('</dl>');
@@ -59,8 +66,8 @@ $(document).ready(function() {
 
   });
 
-  $("#all-repos").click(function(){
-    getRepos(repos);
+  $("#all-repos")[0].click(function(){
+    $("#repos").append("aqui deberia salir el resto");
   });
 
 
