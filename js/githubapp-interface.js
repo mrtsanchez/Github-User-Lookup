@@ -34,7 +34,7 @@ $(document).ready(function() {
     var username = $("#username").val();
 
     currentGitHubSearch.userLookup(username, displayResults, displayErrorMessage);
-
+    currentGitHubSearch.reposLookup(username);
 
   });
 
