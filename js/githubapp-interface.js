@@ -46,9 +46,10 @@ function calculateTime(created_at){
 
 function getRepos(repos, length){
   for (var i = 0; i < length; i++) {
-    $("#repos").append('<dt><a class="link" id="all-repos" target="_blank" href="'+ repos[i].html_url +'">'+ repos[i].name +'</a></dt><dd class="repos-description"><p>'+ repos[i].description +'</p><p>Created '+ calculateTime(repos[i].created_at)+'</p></dd>');
+    $("#repos").append('<dt><a class="link" id="all-repos" target="_blank" href="'+ repos[i].html_url +'">'+ repos[i].name +'</a></dt><dd class="repos-description"><p>'+ repos[i].description +'</p><p>Created '+ calculateTime(repos[i].created_at)+'</p><p>'+repos[i].language+'</p></dd>');
   }
-}
+
+};
 
 var displayRepos = function(repos){
 
@@ -67,17 +68,16 @@ var displayRepos = function(repos){
 
 $(document).ready(function() {
 
-  var currentGitHubSearch = new GitHubSearch();
-
-
   $("#github-search").submit(function(event) {
 
     event.preventDefault();
 
-    var username = $("#username").val();
+    var input_username = $("#username").val();
 
-    currentGitHubSearch.userLookup(username, displayResults, displayErrorMessage);
-    currentGitHubSearch.reposLookup(username, displayRepos);
+    var currentGitHubSearch = new GitHubSearch();
+
+    currentGitHubSearch.userLookup(input_username, displayResults, displayErrorMessage);
+    currentGitHubSearch.reposLookup(input_username, displayRepos);
 
   });
 
