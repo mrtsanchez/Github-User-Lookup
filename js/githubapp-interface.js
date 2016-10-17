@@ -26,7 +26,7 @@ var displayResults = function (username, followers, following, avatarUrl, locati
 var displayErrorMessage = function (username) {
 
   $("#error").show().text("Oh Snap! We couldn’t find any users matching "+"'"+ username +"'");
-  // $("#username").val("");
+  // $("#username").val(""); If I add this, I will get an undefined in the next search
 
 };
 
@@ -104,7 +104,7 @@ var displayRepos = function(repos){
     getRepos(repos, repos.length);
     } else {
     getRepos(repos, 6);
-    $("#show-all-repos").append('<a class="btn btn-primary btn-xs" target="_blank" href='+ repos[0].owner.html_url +'?tab=repositories role="button">All Repos</a>');
+    $("#show-all-repos").append('<a class="btn btn-link" target="_blank" href='+ repos[0].owner.html_url +'?tab=repositories role="button">All Repos</a>');
   }
 
   $("#repos").append('</dl>');
