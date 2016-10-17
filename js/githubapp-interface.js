@@ -26,6 +26,7 @@ var displayResults = function (username, followers, following, avatarUrl, locati
 var displayErrorMessage = function (username) {
 
   $("#error").show().text("Oh Snap! We couldn’t find any users matching "+"'"+ username +"'");
+  // $("#username").val("");
 
 };
 
@@ -122,6 +123,7 @@ $(document).ready(function() {
     event.preventDefault();
 
     $("#error").hide();
+    $(".restart").empty();
 
     input_username = $("#username").val();
 
@@ -138,8 +140,6 @@ $(document).ready(function() {
 
     var language = $("#used-languages").val();
 
-    console.log(language);
-    // currentGitHubSearch.userLookup(input_username, displayResults, displayErrorMessage);
     currentGitHubSearch.reposbyLanguage(input_username, getReposByLanguage, language);
   });
 
