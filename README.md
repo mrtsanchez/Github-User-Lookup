@@ -43,13 +43,13 @@ HTML, Javascript, CSS
 ## Specs
 
 | Behaviour  | Input | Output |
-| ------------- :| ------------- :| ------------- :|
+| ------------- | ------------- | ------------- |
 |The app should return an error message if the user does not exist | #$%  | Oh Snap! We couldn’t find any users matching #$% |
 | The app should return the profile of a given user (name, avatar location and github url)  | vieron  | Javier Sánchez-Marin, Barcelona, Spain, http://github.com/vieron  |
 | The app should return the number of public repos for the user  | vieron | 79  |
 | The app should return the first six public repos of the user  | vieron  | repo name, description, language and creation date  |
 | The app should allow to filter the repos by language   | javascript | Display only repos where language is Javascript  |
-| The app should allow to display expanded data to complete the users profile (bio, company, email, blog, followers, following)  | vieron  | new relic, 122, 187...gul  |
+| The app should allow to display expanded data to complete the users profile (bio, company, email, blog, followers, following)  | vieron  | new relic, 122, 187... |
 
 
 ### License
