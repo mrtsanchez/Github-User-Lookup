@@ -37,18 +37,27 @@ function calculateTime(created_at){
   if (months === 1){
     return months + " month ago.";
   } else if (months >= 12){
-    return years + "years ago."
+    return years + "years ago.";
   } else {
     return months + " months ago.";
   }
 
 }
 
-function getRepos(repos, length){
-  for (var i = 0; i < length; i++) {
-    $("#repos").append('<dt><a class="link" id="all-repos" target="_blank" href="'+ repos[i].html_url +'">'+ repos[i].name +'</a></dt><dd class="repos-description"><p>'+ repos[i].description +'</p><p>Created '+ calculateTime(repos[i].created_at)+'</p><p>'+repos[i].language+'</p></dd>');
+function displayDescription(description){
+
+  if(description === null){
+    return " ";
+  } else {
+    return description;
   }
 
+};
+
+function getRepos(repos, length){
+  for (var i = 0; i < length; i++) {
+    $("#repos").append('<dt><a class="link" id="all-repos" target="_blank" href="'+ repos[i].html_url +'">'+ repos[i].name +'</a></dt><dd class="repos-description"><p id="display-description">'+ displayDescription(repos[i].description) +'</p><p>Created '+ calculateTime(repos[i].created_at)+'</p><p>'+repos[i].language+'</p></dd>');
+  }
 };
 
 var displayRepos = function(repos){
@@ -81,7 +90,9 @@ $(document).ready(function() {
 
   });
 
-  $("#all-repos").click(function(){
+  $("#all-repos").click(function(event){
+
+    event.preventDefault();
     $("#repos").append("aqui deberia salir el resto");
   });
 
