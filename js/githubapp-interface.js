@@ -12,7 +12,7 @@ var displayResults = function (username, followers, following, avatarUrl, locati
   $("#name").text(username);
   $("#location").text(location);
   $("#profile_picture").append(profilePicture);
-  $("#button-link").append('<a class="btn btn-primary" href='+ githubUrl +' role="button">Go to Github Profile</a>');
+  $("#button-link").append('<a class="btn btn-primary" target="_blank" href='+ githubUrl +' role="button">Go to Github Profile</a>');
   $("#followers").text(followers);
   $("#following").text(following);
   $("#bio").text(bio);
@@ -56,9 +56,22 @@ function displayDescription(description){
 
 function getRepos(repos, length){
   for (var i = 0; i < length; i++) {
-    $("#repos").append('<dt><a class="link" id="all-repos" target="_blank" href="'+ repos[i].html_url +'">'+ repos[i].name +'</a></dt><dd class="repos-description"><p id="display-description">'+ displayDescription(repos[i].description) +'</p><p>Created '+ calculateTime(repos[i].created_at)+'</p><p>'+repos[i].language+'</p></dd>');
+    showReposDetails(repos[i];
   }
 };
+
+function getReposByLanguage(repos, language){
+  for (var i = 0; i < repos.length; i++) {
+    if(repos.language === language){
+      showReposDetails(repos[i]);
+    }
+  }
+};
+
+function showReposDetails (repo){
+
+  $("#repos").append('<dt><a class="link" target="_blank" href="'+ repo.html_url +'">'+ repo.name +'</a></dt><dd class="repos-description"><p id="display-description">'+ displayDescription(repo.description) +'</p><p>Created '+ calculateTime(repo.created_at)+'</p><p>'+repo.language+'</p></dd>');
+}
 
 var displayRepos = function(repos){
 
@@ -68,7 +81,7 @@ var displayRepos = function(repos){
     getRepos(repos, repos.length);
     } else {
     getRepos(repos, 6);
-    $("#repos").append('<a class="link" id="all-repos" href="#">Display all repos</a>');
+    $("#repos").append('<a class="btn btn-default btn-xs" target="_blank" href='+ repos[0].owner.html_url +'?tab=repositories role="button">All Repos</a>');
   }
 
   $("#repos").append('</dl>');
@@ -89,13 +102,5 @@ $(document).ready(function() {
     currentGitHubSearch.reposLookup(input_username, displayRepos);
 
   });
-
-  $("#all-repos").click(function(event){
-
-    event.preventDefault();
-    $("#repos").append("aqui deberia salir el resto");
-  });
-
-
 
 });
