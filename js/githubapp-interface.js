@@ -52,23 +52,45 @@ function displayDescription(description){
     return description;
   }
 
-};
+}
 
 function getRepos(repos, length){
   for (var i = 0; i < length; i++) {
-    showReposDetails(repos[i];
+    showReposDetails(repos[i]);
   }
-};
+}
 
-function getReposByLanguage(repos, language){
+function getLanguages(repos){
+
+  var languages=[];
+
   for (var i = 0; i < repos.length; i++) {
-    if(repos.language === language){
+    if (repos[i].language != null){
+    languages.push(repos[i].language);
+    }
+  }
+
+  var uniqLanguages = languages.reduce(function(a,b){
+    if (a.indexOf(b) < 0 ) a.push(b);
+    return a;
+  },[]);
+
+  for (var j = 0; j < uniqLanguages.length; j++) {
+    $("#used-languages").append('<option>'+uniqLanguages[j]+'</option>');
+  }
+
+}
+
+var getReposByLanguage = function(repos, language){
+  $("#repos").empty();
+  for (var i = 0; i < repos.length; i++) {
+    if(repos[i].language === language){
       showReposDetails(repos[i]);
     }
   }
 };
 
-function showReposDetails (repo){
+function showReposDetails(repo){
 
   $("#repos").append('<dt><a class="link" target="_blank" href="'+ repo.html_url +'">'+ repo.name +'</a></dt><dd class="repos-description"><p id="display-description">'+ displayDescription(repo.description) +'</p><p>Created '+ calculateTime(repo.created_at)+'</p><p>'+repo.language+'</p></dd>');
 }
@@ -81,26 +103,45 @@ var displayRepos = function(repos){
     getRepos(repos, repos.length);
     } else {
     getRepos(repos, 6);
-    $("#repos").append('<a class="btn btn-default btn-xs" target="_blank" href='+ repos[0].owner.html_url +'?tab=repositories role="button">All Repos</a>');
+    $("#show-all-repos").append('<a class="btn btn-primary btn-xs" target="_blank" href='+ repos[0].owner.html_url +'?tab=repositories role="button">All Repos</a>');
   }
 
   $("#repos").append('</dl>');
+
+  getLanguages(repos);
 
 };
 
 $(document).ready(function() {
 
+  var input_username;
+  var currentGitHubSearch;
+
   $("#github-search").submit(function(event) {
 
     event.preventDefault();
 
-    var input_username = $("#username").val();
+    $("#error").hide();
 
-    var currentGitHubSearch = new GitHubSearch();
+    input_username = $("#username").val();
+
+    currentGitHubSearch = new GitHubSearch();
 
     currentGitHubSearch.userLookup(input_username, displayResults, displayErrorMessage);
     currentGitHubSearch.reposLookup(input_username, displayRepos);
 
   });
+
+  $("#filter-by").submit(function(event){
+
+    event.preventDefault();
+
+    var language = $("#used-languages").val();
+
+    console.log(language);
+    // currentGitHubSearch.userLookup(input_username, displayResults, displayErrorMessage);
+    currentGitHubSearch.reposbyLanguage(input_username, getReposByLanguage, language);
+  });
+
 
 });

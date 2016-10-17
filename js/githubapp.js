@@ -25,4 +25,14 @@ GitHubSearch.prototype.reposLookup = function(username, displayRepos){
   });
 };
 
+GitHubSearch.prototype.reposbyLanguage = function(username, getReposByLanguage, language){
+
+  $.get('https://api.github.com/users/' + username + '/repos?access_token=' + apiKey).then(function(response){
+    console.log(response);
+  getReposByLanguage(response, language);
+  }).fail(function(error){
+  console.log(error);
+  });
+};
+
 exports.gitHubModule = GitHubSearch;
